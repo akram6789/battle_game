@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Epic Boss Battle!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container home-view">
+        <h1>Epic Boss Battle</h1>
+        <form method="POST" class="name-form">
+            <label for="name">Enter Your Name to Start:</label>
+            <input type="text" id="name" name="name" required autocomplete="off" value="{{ name or '' }}">
+            <button type="submit">Start Game</button>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+        {% if game_over %}
+            <form method="post" action="{{ url_for('reset') }}">
+                <button type="submit">Play Again</button>
+            </form>
+        {% endif %}
+        <footer>
+            <p>Made with Flask. Have fun battling!</p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,47 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Combat Arena</title>
+    <meta charset="UTF-8">
+    <title>Boss Battle — {{ name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        .health-bar { width: 300px; height: 20px; background: red; }
-        .stamina-bar { width: 300px; height: 20px; background: blue; }
-        .log { border: 1px solid #ccc; padding: 10px; height: 200px; overflow-y: scroll; }
-    </style>
 </head>
 <body>
-    <h1>⚔️ Combat Arena ⚔️</h1>
+    <div class="container combat-view">
+        <header>
+            <h1>⚔️ Boss Battle</h1>
+            <div class="player-info">
+                <span>Player: <strong>{{ name }}</strong></span>
+                <span>Level: <strong>{{ level }}</strong></span>
+                <span>XP: {{ xp }}</span>
+                <span>Score: {{ score }}</span>
+            </div>
+        </header>
 
-    <p>Player Health: {{ player_health }}/{{ session['max_player_health'] }}</p>
-    <div class="health-bar" style="width: {{ (player_health / session['max_player_health']) * 300 }}px;"></div>
+        <section class="stats-bar">
+            <div class="bar-label">Your Health</div>
+            <div class="bar health-bar">
+                <div class="fill" style="width: {{ 100 * player_health // max_player_health }}%;">{{ player_health }}/{{ max_player_health }}</div>
+            </div>
+            <div class="bar-label">Stamina</div>
+            <div class="bar stamina-bar">
+                <div class="fill" style="width: {{ 100 * stamina // max_stamina }}%;">{{ stamina }}/{{ max_stamina }}</div>
+            </div>
+            <div class="bar-label">Boss Health</div>
+            <div class="bar enemy-bar">
+                <div class="fill boss" style="width: {{ 100 * enemy_health // max_enemy_health }}%;">{{ enemy_health }}/{{ max_enemy_health }}</div>
+            </div>
+        </section>
 
-    <p>Stamina: {{ stamina }}/{{ session['max_stamina'] }}</p>
-    <div class="stamina-bar" style="width: {{ (stamina / session['max_stamina']) * 300 }}px;"></div>
+        <section class="combat-controls">
+            <form method="post" action="{{ url_for('do_move') }}" id="move-form">
+                <label for="move-select">Select Move:</label>
+                <select name="move" id="move-select" required>
+                    {% for move in available_moves %}
+                        <option value="{{ move.name }}" {% if not move.unlocked %}disabled{% endif %}>
+                            {{ move.emoji }} {{ move.name | title }}{% if not move.unlocked %} (🔒 Locked){% endif %} – {{ move.stamina }} stamina
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Attack / Act</button>
+            </form>
+            <form method="post" action="{{ url_for('use_item') }}" id="item-form">
+                <label for="item-select">Use Inventory:</label>
+                <select name="item" id="item-select">
+                    <option value="">Choose Item...</option>
+                    {% for item in inventory %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Use</button>
+            </form>
+            <form method="post" action="{{ url_for('reset') }}" class="reset-form">
+                <button type="submit">Reset Game</button>
+            </form>
+        </section>
 
-    <p>Enemy Health: {{ enemy_health }}/{{ session['max_enemy_health'] }}</p>
-    <div class="health-bar" style="width: {{ (enemy_health / session['max_enemy_health']) * 300 }}px; background: green;"></div>
+        <section class="combat-log">
+            <h2>Combat Log</h2>
+            <ul id="combat-log-list">
+                {% for entry in combat_log %}
+                    <li class="log-{{ entry.type }}">{{ entry.message }}</li>
+                {% endfor %}
+            </ul>
+        </section>
 
-    <h2>Moves</h2>
-    <form method="post" action="{{ url_for('combat') }}">
-        {% for move, data in moves.items() %}
-            <button type="submit" name="move" value="{{ move }}">
-                {{ data['emoji'] }} {{ move }} (Damage: {{ data['damage'] }})
-            </button>
-        {% endfor %}
-    </form>
+        {% if session.get('game_over', False) %}
+            <div class="game-over-message">
+                <h2>{{ combat_log[0]['message'] }}</h2>
+                <form method="post" action="{{ url_for('reset') }}">
+                    <button type="submit">Restart</button>
+                </form>
+            </div>
+        {% endif %}
 
-    <h2>Combat Log</h2>
-    <div class="log">
-        {% for entry in combat_log %}
-            <p class="{{ entry['type'] }}">{{ entry['message'] }}</p>
-        {% endfor %}
+        <footer>
+            <p>Developed for fun! Can you beat the boss?</p>
+        </footer>
     </div>
-
-    <h2>Inventory</h2>
-    <ul>
-        {% for item in inventory %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
