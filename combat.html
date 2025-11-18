@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combat Arena</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .health-bar { width: 300px; height: 20px; background: red; }
+        .stamina-bar { width: 300px; height: 20px; background: blue; }
+        .log { border: 1px solid #ccc; padding: 10px; height: 200px; overflow-y: scroll; }
+    </style>
+</head>
+<body>
+    <h1>⚔️ Combat Arena ⚔️</h1>
+
+    <p>Player Health: {{ player_health }}/{{ session['max_player_health'] }}</p>
+    <div class="health-bar" style="width: {{ (player_health / session['max_player_health']) * 300 }}px;"></div>
+
+    <p>Stamina: {{ stamina }}/{{ session['max_stamina'] }}</p>
+    <div class="stamina-bar" style="width: {{ (stamina / session['max_stamina']) * 300 }}px;"></div>
+
+    <p>Enemy Health: {{ enemy_health }}/{{ session['max_enemy_health'] }}</p>
+    <div class="health-bar" style="width: {{ (enemy_health / session['max_enemy_health']) * 300 }}px; background: green;"></div>
+
+    <h2>Moves</h2>
+    <form method="post" action="{{ url_for('combat') }}">
+        {% for move, data in moves.items() %}
+            <button type="submit" name="move" value="{{ move }}">
+                {{ data['emoji'] }} {{ move }} (Damage: {{ data['damage'] }})
+            </button>
+        {% endfor %}
+    </form>
+
+    <h2>Combat Log</h2>
+    <div class="log">
+        {% for entry in combat_log %}
+            <p class="{{ entry['type'] }}">{{ entry['message'] }}</p>
+        {% endfor %}
+    </div>
+
+    <h2>Inventory</h2>
+    <ul>
+        {% for item in inventory %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

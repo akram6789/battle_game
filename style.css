@@ -1,0 +1,305 @@
+box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.progress-fill.player-health {
+    background: linear-gradient(90deg, #10b981, #059669);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.actions-section, .moves-section, .password-section {
+    margin-bottom: 32px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.action-form {
+    width: 100%;
+}
+
+.btn-action {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-action:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #a78bfa;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
+}
+
+.action-emoji {
+    font-size: 36px;
+}
+
+.action-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.action-reward {
+    font-size: 13px;
+    color: #10b981;
+}
+
+.moves-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.move-form {
+    width: 100%;
+}
+
+.move-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.move-card.unlocked {
+    border-color: #10b981;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.move-card.unlocked:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.move-card.locked {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.move-emoji {
+    font-size: 40px;
+}
+
+.move-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+}
+
+.move-damage {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ef4444;
+}
+
+.move-lock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.lock-icon {
+    font-size: 24px;
+}
+
+.lock-text {
+    font-size: 11px;
+    color: #fbbf24;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.password-section {
+    background: rgba(139, 92, 246, 0.1);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.password-form {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.btn-secret {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    border: none;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.btn-secret:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.combat-log {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.log-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    border-left: 4px solid transparent;
+}
+
+.log-entry.success {
+    background: rgba(16, 185, 129, 0.1);
+    border-left-color: #10b981;
+    color: #a7f3d0;
+}
+
+.log-entry.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-left-color: #ef4444;
+    color: #fca5a5;
+}
+
+.log-entry.attack {
+    background: rgba(251, 191, 36, 0.1);
+    border-left-color: #fbbf24;
+    color: #fde68a;
+}
+
+.log-entry.victory {
+    background: rgba(139, 92, 246, 0.2);
+    border-left-color: #8b5cf6;
+    color: #ddd6fe;
+    font-weight: 600;
+}
+
+.log-entry.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-left-color: #3b82f6;
+    color: #bfdbfe;
+}
+
+.victory-banner {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    border: 3px solid #f59e0b;
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+    margin-bottom: 32px;
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+}
+
+.victory-banner h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 28px;
+    color: #111827;
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.victory-banner p {
+    font-size: 18px;
+    color: #1f2937;
+    margin-bottom: 24px;
+}
+
+.victory-banner .btn-primary {
+    background: linear-gradient(135deg, #111827, #374151);
+}
+
+.defeat-banner {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    border: 3px solid #7f1d1d;
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+    margin-bottom: 32px;
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+}
+
+.defeat-banner h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 16px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.defeat-banner p {
+    font-size: 18px;
+    color: #fecaca;
+    margin-bottom: 24px;
+}
+
+.defeat-banner .btn-primary {
+    background: linear-gradient(135deg, #111827, #374151);
+}
+
+.enemy-attack-form {
+    width: 100%;
+}
+
+.enemy-card {
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid rgba(239, 68, 68, 0.3);
+}
+
+.enemy-card:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.enemy-card .stat-label {
+    color: #fca5a5;
+}

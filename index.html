@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Battle Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔥 Welcome to the Battle Arena 🔥</h1>
+    {% if not session.get('name') %}
+        <form action="{{ url_for('combat') }}">
+            <label>Enter your name:</label>
+            <input type="text" name="name" required>
+            <button type="submit">Start Game</button>
+        </form>
+    {% else %}
+        <p>Welcome back, {{ session['name'] }}!</p>
+        <a href="{{ url_for('combat') }}">Continue Battle</a>
+    {% endif %}
+</body>
+</html>
