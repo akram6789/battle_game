@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="UTF-8">
     <title>Epic Boss Battle!</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -28,11 +28,8 @@
                 <button type="submit">Play Again</button>
             </form>
         {% endif %}
-    </footer>
-        </footer>
     </div>
     <script src="{{ url_for('static', filename='static.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.js') }}">
-
+    <script src="{{ url_for('static', filename='style.js') }}"></script>
 </body>
 </html>
