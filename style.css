@@ -1,305 +1,113 @@
-box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+body {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #fafafa;
 }
 
-.progress-fill.player-health {
-    background: linear-gradient(90deg, #10b981, #059669);
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-}
-
-.actions-section, .moves-section, .password-section {
-    margin-bottom: 32px;
-}
-
-.actions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-}
-
-.action-form {
-    width: 100%;
-}
-
-.btn-action {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 24px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-action:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #a78bfa;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
-}
-
-.action-emoji {
-    font-size: 36px;
-}
-
-.action-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.action-reward {
-    font-size: 13px;
-    color: #10b981;
-}
-
-.moves-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
-}
-
-.move-form {
-    width: 100%;
-}
-
-.move-card {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+.container {
+    max-width: 400px;
+    margin: 70px auto;
+    background: rgba(36, 38, 58, 0.92);
+    border-radius: 18px;
+    padding: 32px 24px 24px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
-.move-card.unlocked {
-    border-color: #10b981;
-    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.6em;
+    color: #ffbb00;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 8px #444;
 }
 
-.move-card.unlocked:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
-    background: rgba(16, 185, 129, 0.1);
+.name-form label {
+    display: block;
+    font-size: 1.09em;
+    color: #eee;
+    margin-bottom: 13px;
 }
 
-.move-card.locked {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.move-emoji {
-    font-size: 40px;
-}
-
-.move-name {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 11px;
-    color: #fff;
-    text-align: center;
-}
-
-.move-damage {
-    font-size: 14px;
-    font-weight: 600;
-    color: #ef4444;
-}
-
-.move-lock {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.lock-icon {
-    font-size: 24px;
-}
-
-.lock-text {
-    font-size: 11px;
-    color: #fbbf24;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.password-section {
-    background: rgba(139, 92, 246, 0.1);
-    border: 2px solid rgba(139, 92, 246, 0.3);
-    border-radius: 12px;
-    padding: 32px;
-}
-
-.password-form {
-    display: flex;
-    gap: 12px;
-    max-width: 600px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.btn-secret {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+.name-form input[type="text"] {
+    padding: 10px 12px;
+    width: 90%;
+    max-width: 260px;
+    margin-bottom: 20px;
     border: none;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    border-radius: 7px;
+    background: #292c36;
+    color: #fffdfc;
+    font-size: 1em;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    outline: none;
+    transition: background 0.2s;
+}
+.name-form input[type="text"]:focus {
+    background: #343651;
 }
 
-.btn-secret:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-}
-
-.combat-log {
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+button {
+    padding: 10px 28px;
+    font-size: 1.09em;
+    border: none;
     border-radius: 12px;
-    padding: 24px;
-}
-
-.log-entries {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.log-entry {
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    border-left: 4px solid transparent;
-}
-
-.log-entry.success {
-    background: rgba(16, 185, 129, 0.1);
-    border-left-color: #10b981;
-    color: #a7f3d0;
-}
-
-.log-entry.error {
-    background: rgba(239, 68, 68, 0.1);
-    border-left-color: #ef4444;
-    color: #fca5a5;
-}
-
-.log-entry.attack {
-    background: rgba(251, 191, 36, 0.1);
-    border-left-color: #fbbf24;
-    color: #fde68a;
-}
-
-.log-entry.victory {
-    background: rgba(139, 92, 246, 0.2);
-    border-left-color: #8b5cf6;
-    color: #ddd6fe;
+    background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+    color: #252525;
     font-weight: 600;
-}
-
-.log-entry.info {
-    background: rgba(59, 130, 246, 0.1);
-    border-left-color: #3b82f6;
-    color: #bfdbfe;
-}
-
-.victory-banner {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    border: 3px solid #f59e0b;
-    border-radius: 16px;
-    padding: 48px;
-    text-align: center;
-    margin-bottom: 32px;
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
-}
-
-.victory-banner h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 28px;
-    color: #111827;
-    margin-bottom: 16px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.victory-banner p {
-    font-size: 18px;
-    color: #1f2937;
-    margin-bottom: 24px;
-}
-
-.victory-banner .btn-primary {
-    background: linear-gradient(135deg, #111827, #374151);
-}
-
-.defeat-banner {
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-    border: 3px solid #7f1d1d;
-    border-radius: 16px;
-    padding: 48px;
-    text-align: center;
-    margin-bottom: 32px;
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
-}
-
-.defeat-banner h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 28px;
-    color: #fff;
-    margin-bottom: 16px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.defeat-banner p {
-    font-size: 18px;
-    color: #fecaca;
-    margin-bottom: 24px;
-}
-
-.defeat-banner .btn-primary {
-    background: linear-gradient(135deg, #111827, #374151);
-}
-
-.enemy-attack-form {
-    width: 100%;
-}
-
-.enemy-card {
     cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid rgba(239, 68, 68, 0.3);
+    transition: opacity 0.17s, box-shadow 0.19s, transform 0.18s;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 12px rgba(255,187,0,0.13);
+}
+button:hover {
+    opacity: 0.93;
+    box-shadow: 0 4px 16px rgba(255,187,0,0.29), 0 1.5px 4px #111 inset;
+    transform: translateY(-1.5px) scale(1.03);
 }
 
-.enemy-card:hover {
-    background: rgba(239, 68, 68, 0.1);
-    border-color: #ef4444;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+#flash-messages {
+    margin-top: 18px;
+}
+.flash-error, .flash-danger {
+    background: #ff6060;
+    color: #fff2f2;
+    padding: 11px 13px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #b50019;
+}
+.flash-success {
+    background: #b6fc91;
+    color: #224619;
+    padding: 11px 13px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #5fe340;
+}
+.flash-info, .flash-warning {
+    background: #205080;
+    color: #f0eefa;
+    padding: 11px 13px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #3bc9db;
 }
 
-.enemy-card .stat-label {
-    color: #fca5a5;
+@media (max-width: 520px) {
+    .container {
+        max-width: 97vw;
+        padding: 22px 4vw 16px 4vw;
+    }
+    body {
+        min-height: 90vh;
+    }
+    h1 {
+        font-size: 1.49rem;
+    }
 }
